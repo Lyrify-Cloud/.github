@@ -1,0 +1,132 @@
+---
+import Component from "../components/Component.astro";
+import Project from "../components/project/index.astro";
+import { PRRJECTS } from "../data/projects";
+import { SOCIALS } from "../data/socials";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Lyrify Cloud">
+  <div class="relative hero z-10">
+    <div
+      class="mx-auto min-h-screen max-w-screen-2xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
+    >
+      <div class="lg:flex lg:justify-between lg:gap-4">
+        <header
+          class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24"
+        >
+          <div
+            class="flex lg:items-start gap-4 flex-col lg:flex-row items-center text-center lg:text-left"
+          >
+            <img src="/avatar.webp" alt="Lyrify Logo" class="w-20 h-20" />
+            <div>
+              <a
+                href="/"
+                class="text-4xl lg:text-5xl block font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
+              >
+                <h1>Lyrify Cloud</h1>
+              </a>
+              <h2 class="mt-2 text-sm lg:text-lg font-medium text-neutral-400">
+                Simplicity is the ultimate form of sophistication.
+              </h2>
+            </div>
+          </div>
+
+          {
+            SOCIALS.length && (
+              <ul
+                class="mt-8 flex items-center justify-center lg:justify-normal gap-x-5"
+                aria-label="Social media"
+              >
+                {SOCIALS.map((social) => (
+                  <li class="text-xs p-2 rounded" data-ccursor>
+                    <a
+                      class="block hover:text-slate-200"
+                      href={social.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={`${social.name} (opens in a new tab)`}
+                    >
+                      <span class="sr-only">{social.name}</span>
+                      {<Component component={social.icon} />}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </header>
+
+        <main id="content" class="pt-24 lg:w-1/2 lg:py-24">
+          <section
+            id="about"
+            class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+            aria-label="About me"
+          >
+            <div
+              class="sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
+            >
+              <h2
+                class="text-sm font-bold uppercase tracking-widest text-neutral-200 lg:sr-only"
+              >
+                About
+              </h2>
+            </div>
+            <div>
+              <div class="mb-4 space-y-5">
+                <p>
+                  In Lyrify, we believe in the synergy between technology and innovation.
+                  Our comprehensive suite of tools and platforms is designed to transform
+                  how you tackle daily challenges, making the complex simple and
+                  turning the impossible into possible.
+
+
+                </p>
+
+                <p>
+                  Looking forward to new challenges and exciting collaborations!
+                </p>
+              </div>
+            </div>
+          </section>
+          <section
+            id="Project"
+            class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+            aria-label="Project"
+          >
+            <div
+              class="sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-3 backdrop-blur-lg md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
+            >
+              <h2
+                class="text-sm font-bold uppercase tracking-widest text-neutral-200 lg:sr-only"
+              >
+                Project
+              </h2>
+            </div><div>
+              <ol class="group/list space-y-12">
+                {PRRJECTS.map((project) => <Project {...project} />)}
+              </ol>          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style scoped>
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .hero {
+    background-image: url(/pattern.svg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    overflow-y: visible;
+    overflow-x: clip;
+  }
+</style>
